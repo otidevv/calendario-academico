@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C \"C:\\\\sistemas unamad\\\\calendario-academico\" log --oneline)",
+      "Bash(npx shadcn@latest add card badge accordion tabs input select dialog scroll-area separator tooltip -y)",
+      "Bash(npm run build:*)",
+      "Bash(npm run dev:*)",
+      "Bash(timeout:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\sistemas unamad\\\\calendario-academico\\\\read-excel.ps1\")",
+      "Bash(chcp:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File \"C:\\\\sistemas unamad\\\\calendario-academico\\\\read-excel2.ps1\")",
+      "Bash(ls -la \"C:\\\\sistemas unamad\\\\calendario-academico\\\\public\\\\img\"\" 2>/dev/null || echo \"Directorio no existe \")"
+    ]
+  }
+}
