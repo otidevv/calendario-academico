@@ -1,5 +1,6 @@
 import { Header } from "@/components/layout/Header";
 import { CalendarContainer } from "@/components/calendar/CalendarContainer";
+import { MascotVideo } from "@/components/layout/MascotVideo";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
         <main>
           <CalendarContainer />
         </main>
+        <MascotVideo />
       </div>
     </div>
   );
