@@ -831,7 +831,7 @@ export const calendarEvents: CalendarEvent[] = [
     id: "acad-fin-2",
     title: "Fin de Labores Académicas",
     description: "Fin de labores académicas del semestre 2026-2",
-    startDate: "2026-12-25",
+    startDate: "2026-12-24",
     category: "academico",
     semester: "2026-2",
   },
