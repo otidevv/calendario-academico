@@ -35,7 +35,7 @@ export function CalendarContainer() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedMonth, setSelectedMonth] = useState<number | null>(null);
-  const [selectedSemester, setSelectedSemester] = useState<SemesterType>("2026-1");
+  const [selectedSemester, setSelectedSemester] = useState<SemesterType>("2026-0");
 
   const filteredEvents = useMemo(() => {
     let events = [...calendarEvents];
