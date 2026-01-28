@@ -110,50 +110,92 @@ export function CalendarContainer() {
       {/* Semester Filter Tabs */}
       <div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-sm">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-2 py-4">
+          <div className="flex flex-wrap justify-center gap-4 py-6">
+            {/* 2026-0 */}
             <button
               onClick={() => setSelectedSemester("2026-0")}
-              className={`
-                px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 cursor-pointer
-                ${
-                  selectedSemester === "2026-0"
-                    ? "bg-gradient-to-r from-blue-500 to-blue-600 text-white shadow-lg shadow-blue-500/30 scale-105"
-                    : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
-                }
-              `}
+              className="group relative px-8 py-4 rounded-2xl font-bold text-base min-w-[180px] cursor-pointer overflow-hidden transition-all duration-500 ease-out"
+              style={{
+                background: selectedSemester === "2026-0"
+                  ? "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)"
+                  : undefined,
+                transform: selectedSemester === "2026-0" ? "scale(1.05)" : "scale(1)",
+                boxShadow: selectedSemester === "2026-0"
+                  ? "0 20px 40px -10px rgba(59, 130, 246, 0.5)"
+                  : "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+              }}
             >
-              <span className="block">2026-0</span>
-              <span className="text-xs opacity-75">Nivelación</span>
+              <div className={`absolute inset-0 bg-gray-100 dark:bg-gray-800 transition-opacity duration-500 ${selectedSemester === "2026-0" ? "opacity-0" : "opacity-100"}`} />
+              <div className={`absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-600 transition-opacity duration-500 ${selectedSemester === "2026-0" ? "opacity-0" : "opacity-0 group-hover:opacity-20"}`} />
+              <div className="relative z-10">
+                <span className={`block text-xl font-black transition-colors duration-500 ${selectedSemester === "2026-0" ? "text-white" : "text-gray-700 dark:text-gray-300"}`}>
+                  2026-0
+                </span>
+                <span className={`text-sm transition-colors duration-500 ${selectedSemester === "2026-0" ? "text-blue-100" : "text-gray-500 dark:text-gray-400"}`}>
+                  Nivelación
+                </span>
+              </div>
+              {selectedSemester === "2026-0" && (
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-white rounded-full mb-1 animate-pulse" />
+              )}
             </button>
 
+            {/* 2026-1 */}
             <button
               onClick={() => setSelectedSemester("2026-1")}
-              className={`
-                px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 cursor-pointer
-                ${
-                  selectedSemester === "2026-1"
-                    ? "bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-lg shadow-green-500/30 scale-105"
-                    : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
-                }
-              `}
+              className="group relative px-8 py-4 rounded-2xl font-bold text-base min-w-[180px] cursor-pointer overflow-hidden transition-all duration-500 ease-out"
+              style={{
+                background: selectedSemester === "2026-1"
+                  ? "linear-gradient(135deg, #22c55e 0%, #15803d 100%)"
+                  : undefined,
+                transform: selectedSemester === "2026-1" ? "scale(1.05)" : "scale(1)",
+                boxShadow: selectedSemester === "2026-1"
+                  ? "0 20px 40px -10px rgba(34, 197, 94, 0.5)"
+                  : "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+              }}
             >
-              <span className="block">2026-1</span>
-              <span className="text-xs opacity-75">Primer Semestre</span>
+              <div className={`absolute inset-0 bg-gray-100 dark:bg-gray-800 transition-opacity duration-500 ${selectedSemester === "2026-1" ? "opacity-0" : "opacity-100"}`} />
+              <div className={`absolute inset-0 bg-gradient-to-r from-green-400 to-green-600 transition-opacity duration-500 ${selectedSemester === "2026-1" ? "opacity-0" : "opacity-0 group-hover:opacity-20"}`} />
+              <div className="relative z-10">
+                <span className={`block text-xl font-black transition-colors duration-500 ${selectedSemester === "2026-1" ? "text-white" : "text-gray-700 dark:text-gray-300"}`}>
+                  2026-1
+                </span>
+                <span className={`text-sm transition-colors duration-500 ${selectedSemester === "2026-1" ? "text-green-100" : "text-gray-500 dark:text-gray-400"}`}>
+                  Primer Semestre
+                </span>
+              </div>
+              {selectedSemester === "2026-1" && (
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-white rounded-full mb-1 animate-pulse" />
+              )}
             </button>
 
+            {/* 2026-2 */}
             <button
               onClick={() => setSelectedSemester("2026-2")}
-              className={`
-                px-6 py-3 rounded-xl font-semibold text-sm transition-all duration-200 cursor-pointer
-                ${
-                  selectedSemester === "2026-2"
-                    ? "bg-gradient-to-r from-purple-500 to-violet-500 text-white shadow-lg shadow-purple-500/30 scale-105"
-                    : "bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-700"
-                }
-              `}
+              className="group relative px-8 py-4 rounded-2xl font-bold text-base min-w-[180px] cursor-pointer overflow-hidden transition-all duration-500 ease-out"
+              style={{
+                background: selectedSemester === "2026-2"
+                  ? "linear-gradient(135deg, #a855f7 0%, #7c3aed 100%)"
+                  : undefined,
+                transform: selectedSemester === "2026-2" ? "scale(1.05)" : "scale(1)",
+                boxShadow: selectedSemester === "2026-2"
+                  ? "0 20px 40px -10px rgba(168, 85, 247, 0.5)"
+                  : "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+              }}
             >
-              <span className="block">2026-2</span>
-              <span className="text-xs opacity-75">Segundo Semestre</span>
+              <div className={`absolute inset-0 bg-gray-100 dark:bg-gray-800 transition-opacity duration-500 ${selectedSemester === "2026-2" ? "opacity-0" : "opacity-100"}`} />
+              <div className={`absolute inset-0 bg-gradient-to-r from-purple-400 to-purple-600 transition-opacity duration-500 ${selectedSemester === "2026-2" ? "opacity-0" : "opacity-0 group-hover:opacity-20"}`} />
+              <div className="relative z-10">
+                <span className={`block text-xl font-black transition-colors duration-500 ${selectedSemester === "2026-2" ? "text-white" : "text-gray-700 dark:text-gray-300"}`}>
+                  2026-2
+                </span>
+                <span className={`text-sm transition-colors duration-500 ${selectedSemester === "2026-2" ? "text-purple-100" : "text-gray-500 dark:text-gray-400"}`}>
+                  Segundo Semestre
+                </span>
+              </div>
+              {selectedSemester === "2026-2" && (
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-white rounded-full mb-1 animate-pulse" />
+              )}
             </button>
           </div>
         </div>
@@ -225,7 +267,10 @@ export function CalendarContainer() {
 
       {/* Calendar months */}
       <div className="container mx-auto px-4 py-8">
-        <div className="space-y-8">
+        <div
+          key={selectedSemester}
+          className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500"
+        >
           {MONTHS.map((monthName, index) => (
             <div key={monthName} id={`month-${index}`} className="scroll-mt-32">
               <MonthView

@@ -115,7 +115,7 @@ export function MonthView({
 
   return (
     <>
-      <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 relative">
         {/* Month Header */}
         <div className={`bg-gradient-to-r ${colors.bg} p-6`}>
           <div className="flex items-center justify-between">
@@ -134,8 +134,18 @@ export function MonthView({
         </div>
 
         {/* Content */}
-        <div className="p-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="p-6 relative">
+          {/* Watermark Logo */}
+          <div
+            className="absolute inset-0 pointer-events-none opacity-[0.08] dark:opacity-[0.12]"
+            style={{
+              backgroundImage: "url('/img/log/logounamad.png')",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundSize: "350px",
+            }}
+          />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 relative z-10">
             {/* Events list */}
             <div className="lg:col-span-2 space-y-4">
               {selectedDate && selectedDateEvents.length > 0 ? (
