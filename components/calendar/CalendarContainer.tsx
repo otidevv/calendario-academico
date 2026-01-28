@@ -110,11 +110,30 @@ export function CalendarContainer() {
       {/* Semester Filter Tabs */}
       <div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-sm">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-center gap-4 py-6">
+          {/* Título con OTO */}
+          <div className="text-center pt-6 pb-2">
+            <h2 className="text-xl md:text-2xl font-bold text-gray-700 dark:text-gray-200">
+              Conociendo el Calendario Académico con{" "}
+              <span style={{ color: "#db0455" }}>OTO</span>
+            </h2>
+          </div>
+          <div className="flex flex-wrap justify-center items-end gap-6 py-6">
+            {/* Mascota apuntando a los periodos */}
+            <div className="hidden lg:block">
+              <img
+                src="/img/mascota/mascota.png"
+                alt="OTO - Mascota UNAMAD"
+                className="w-56 h-auto drop-shadow-xl"
+                style={{
+                  filter: "drop-shadow(0 4px 15px rgba(219, 4, 85, 0.3))",
+                  transform: "scaleX(-1)"
+                }}
+              />
+            </div>
             {/* 2026-0 */}
             <button
               onClick={() => setSelectedSemester("2026-0")}
-              className="group relative px-8 py-4 rounded-2xl font-bold text-base min-w-[180px] cursor-pointer overflow-hidden transition-all duration-500 ease-out"
+              className="group relative px-10 py-5 rounded-2xl font-bold text-base min-w-[220px] cursor-pointer overflow-hidden transition-all duration-500 ease-out"
               style={{
                 background: selectedSemester === "2026-0"
                   ? "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)"
@@ -128,75 +147,99 @@ export function CalendarContainer() {
               <div className={`absolute inset-0 bg-gray-100 dark:bg-gray-800 transition-opacity duration-500 ${selectedSemester === "2026-0" ? "opacity-0" : "opacity-100"}`} />
               <div className={`absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-600 transition-opacity duration-500 ${selectedSemester === "2026-0" ? "opacity-0" : "opacity-0 group-hover:opacity-20"}`} />
               <div className="relative z-10">
-                <span className={`block text-xl font-black transition-colors duration-500 ${selectedSemester === "2026-0" ? "text-white" : "text-gray-700 dark:text-gray-300"}`}>
+                <span className={`block text-2xl font-black transition-colors duration-500 ${selectedSemester === "2026-0" ? "text-white" : "text-gray-700 dark:text-gray-300"}`}>
                   2026-0
                 </span>
-                <span className={`text-sm transition-colors duration-500 ${selectedSemester === "2026-0" ? "text-blue-100" : "text-gray-500 dark:text-gray-400"}`}>
+                <span className={`text-base transition-colors duration-500 ${selectedSemester === "2026-0" ? "text-blue-100" : "text-gray-500 dark:text-gray-400"}`}>
                   Nivelación
                 </span>
               </div>
               {selectedSemester === "2026-0" && (
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-white rounded-full mb-1 animate-pulse" />
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-14 h-1 bg-white rounded-full mb-1 animate-pulse" />
               )}
             </button>
 
-            {/* 2026-1 */}
-            <button
-              onClick={() => setSelectedSemester("2026-1")}
-              className="group relative px-8 py-4 rounded-2xl font-bold text-base min-w-[180px] cursor-pointer overflow-hidden transition-all duration-500 ease-out"
-              style={{
-                background: selectedSemester === "2026-1"
-                  ? "linear-gradient(135deg, #22c55e 0%, #15803d 100%)"
-                  : undefined,
-                transform: selectedSemester === "2026-1" ? "scale(1.05)" : "scale(1)",
-                boxShadow: selectedSemester === "2026-1"
-                  ? "0 20px 40px -10px rgba(34, 197, 94, 0.5)"
-                  : "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <div className={`absolute inset-0 bg-gray-100 dark:bg-gray-800 transition-opacity duration-500 ${selectedSemester === "2026-1" ? "opacity-0" : "opacity-100"}`} />
-              <div className={`absolute inset-0 bg-gradient-to-r from-green-400 to-green-600 transition-opacity duration-500 ${selectedSemester === "2026-1" ? "opacity-0" : "opacity-0 group-hover:opacity-20"}`} />
-              <div className="relative z-10">
-                <span className={`block text-xl font-black transition-colors duration-500 ${selectedSemester === "2026-1" ? "text-white" : "text-gray-700 dark:text-gray-300"}`}>
-                  2026-1
-                </span>
-                <span className={`text-sm transition-colors duration-500 ${selectedSemester === "2026-1" ? "text-green-100" : "text-gray-500 dark:text-gray-400"}`}>
-                  Primer Semestre
-                </span>
-              </div>
-              {selectedSemester === "2026-1" && (
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-white rounded-full mb-1 animate-pulse" />
-              )}
-            </button>
+            {/* 2026-1 con mascota arriba */}
+            <div className="flex flex-col items-center">
+                {/* Mascota arriba del botón */}
+                <div className="hidden lg:block mb-2">
+                  <img
+                    src="/img/mascota/otoabajo.png"
+                    alt="OTO - Mascota UNAMAD"
+                    className="w-56 h-auto drop-shadow-lg"
+                    style={{ filter: "drop-shadow(0 4px 10px rgba(219, 4, 85, 0.3))" }}
+                  />
+                </div>
 
-            {/* 2026-2 */}
-            <button
-              onClick={() => setSelectedSemester("2026-2")}
-              className="group relative px-8 py-4 rounded-2xl font-bold text-base min-w-[180px] cursor-pointer overflow-hidden transition-all duration-500 ease-out"
-              style={{
-                background: selectedSemester === "2026-2"
-                  ? "linear-gradient(135deg, #a855f7 0%, #7c3aed 100%)"
-                  : undefined,
-                transform: selectedSemester === "2026-2" ? "scale(1.05)" : "scale(1)",
-                boxShadow: selectedSemester === "2026-2"
-                  ? "0 20px 40px -10px rgba(168, 85, 247, 0.5)"
-                  : "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
-              }}
-            >
-              <div className={`absolute inset-0 bg-gray-100 dark:bg-gray-800 transition-opacity duration-500 ${selectedSemester === "2026-2" ? "opacity-0" : "opacity-100"}`} />
-              <div className={`absolute inset-0 bg-gradient-to-r from-purple-400 to-purple-600 transition-opacity duration-500 ${selectedSemester === "2026-2" ? "opacity-0" : "opacity-0 group-hover:opacity-20"}`} />
-              <div className="relative z-10">
-                <span className={`block text-xl font-black transition-colors duration-500 ${selectedSemester === "2026-2" ? "text-white" : "text-gray-700 dark:text-gray-300"}`}>
-                  2026-2
-                </span>
-                <span className={`text-sm transition-colors duration-500 ${selectedSemester === "2026-2" ? "text-purple-100" : "text-gray-500 dark:text-gray-400"}`}>
-                  Segundo Semestre
-                </span>
+                <button
+                  onClick={() => setSelectedSemester("2026-1")}
+                  className="group relative px-10 py-5 rounded-2xl font-bold text-base min-w-[220px] cursor-pointer overflow-hidden transition-all duration-500 ease-out"
+                  style={{
+                    background: selectedSemester === "2026-1"
+                      ? "linear-gradient(135deg, #22c55e 0%, #15803d 100%)"
+                      : undefined,
+                    transform: selectedSemester === "2026-1" ? "scale(1.05)" : "scale(1)",
+                    boxShadow: selectedSemester === "2026-1"
+                      ? "0 20px 40px -10px rgba(34, 197, 94, 0.5)"
+                      : "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                  }}
+                >
+                  <div className={`absolute inset-0 bg-gray-100 dark:bg-gray-800 transition-opacity duration-500 ${selectedSemester === "2026-1" ? "opacity-0" : "opacity-100"}`} />
+                  <div className={`absolute inset-0 bg-gradient-to-r from-green-400 to-green-600 transition-opacity duration-500 ${selectedSemester === "2026-1" ? "opacity-0" : "opacity-0 group-hover:opacity-20"}`} />
+                  <div className="relative z-10">
+                    <span className={`block text-2xl font-black transition-colors duration-500 ${selectedSemester === "2026-1" ? "text-white" : "text-gray-700 dark:text-gray-300"}`}>
+                      2026-1
+                    </span>
+                    <span className={`text-base transition-colors duration-500 ${selectedSemester === "2026-1" ? "text-green-100" : "text-gray-500 dark:text-gray-400"}`}>
+                      Primer Semestre
+                    </span>
+                  </div>
+                  {selectedSemester === "2026-1" && (
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-14 h-1 bg-white rounded-full mb-1 animate-pulse" />
+                  )}
+                </button>
+            </div>
+
+            {/* 2026-2 con mascota */}
+            <div className="flex items-end gap-3">
+              <button
+                onClick={() => setSelectedSemester("2026-2")}
+                className="group relative px-10 py-5 rounded-2xl font-bold text-base min-w-[220px] cursor-pointer overflow-hidden transition-all duration-500 ease-out"
+                style={{
+                  background: selectedSemester === "2026-2"
+                    ? "linear-gradient(135deg, #a855f7 0%, #7c3aed 100%)"
+                    : undefined,
+                  transform: selectedSemester === "2026-2" ? "scale(1.05)" : "scale(1)",
+                  boxShadow: selectedSemester === "2026-2"
+                    ? "0 20px 40px -10px rgba(168, 85, 247, 0.5)"
+                    : "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                }}
+              >
+                <div className={`absolute inset-0 bg-gray-100 dark:bg-gray-800 transition-opacity duration-500 ${selectedSemester === "2026-2" ? "opacity-0" : "opacity-100"}`} />
+                <div className={`absolute inset-0 bg-gradient-to-r from-purple-400 to-purple-600 transition-opacity duration-500 ${selectedSemester === "2026-2" ? "opacity-0" : "opacity-0 group-hover:opacity-20"}`} />
+                <div className="relative z-10">
+                  <span className={`block text-2xl font-black transition-colors duration-500 ${selectedSemester === "2026-2" ? "text-white" : "text-gray-700 dark:text-gray-300"}`}>
+                    2026-2
+                  </span>
+                  <span className={`text-base transition-colors duration-500 ${selectedSemester === "2026-2" ? "text-purple-100" : "text-gray-500 dark:text-gray-400"}`}>
+                    Segundo Semestre
+                  </span>
+                </div>
+                {selectedSemester === "2026-2" && (
+                  <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-14 h-1 bg-white rounded-full mb-1 animate-pulse" />
+                )}
+              </button>
+
+              {/* Mascota like al lado derecho */}
+              <div className="hidden lg:flex items-end">
+                <img
+                  src="/img/mascota/otolike.png"
+                  alt="OTO - Mascota UNAMAD Like"
+                  className="w-56 h-auto drop-shadow-lg"
+                  style={{ filter: "drop-shadow(0 4px 10px rgba(219, 4, 85, 0.3))" }}
+                />
               </div>
-              {selectedSemester === "2026-2" && (
-                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-12 h-1 bg-white rounded-full mb-1 animate-pulse" />
-              )}
-            </button>
+            </div>
           </div>
         </div>
       </div>
