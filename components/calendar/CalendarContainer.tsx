@@ -162,6 +162,14 @@ export function CalendarContainer() {
     setSelectedSemester(semester);
     setExpandedMonth(null); // Resetear mes expandido al cambiar de periodo
     setSelectedMonth(null); // Resetear mes seleccionado también
+
+    // Scroll hacia la sección de meses
+    setTimeout(() => {
+      const monthsSection = document.getElementById("months-section");
+      if (monthsSection) {
+        monthsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }, 100);
   };
 
   // Get semester info for display
@@ -270,7 +278,7 @@ export function CalendarContainer() {
             {/* 2026-0 */}
             <button
               onClick={() => handleSemesterChange("2026-0")}
-              className="group relative px-10 py-5 rounded-2xl font-bold text-base min-w-[220px] cursor-pointer overflow-hidden "
+              className="group relative px-10 py-5 rounded-2xl font-bold text-base min-w-[220px] cursor-pointer overflow-hidden"
               style={{
                 background: selectedSemester === "2026-0"
                   ? "linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%)"
@@ -279,10 +287,11 @@ export function CalendarContainer() {
                 boxShadow: selectedSemester === "2026-0"
                   ? "0 20px 40px -10px rgba(59, 130, 246, 0.5)"
                   : "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                border: selectedSemester === "2026-0" ? "none" : "3px solid #3b82f6",
                 transition: "transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease"
               }}
             >
-              <div className={`absolute inset-0 bg-gray-100 dark:bg-gray-800 transition-opacity duration-300 ${selectedSemester === "2026-0" ? "opacity-0" : "opacity-100"}`} />
+              <div className={`absolute inset-0 bg-white dark:bg-gray-800 transition-opacity duration-300 ${selectedSemester === "2026-0" ? "opacity-0" : "opacity-100"}`} />
               <div className={`absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-600 transition-opacity duration-300 ${selectedSemester === "2026-0" ? "opacity-0" : "opacity-0 group-hover:opacity-20"}`} />
               <div className="relative z-10">
                 <span className={`block text-3xl md:text-4xl font-black transition-colors duration-300 ${selectedSemester === "2026-0" ? "text-white" : "text-gray-700 dark:text-gray-300"}`}>
@@ -300,7 +309,7 @@ export function CalendarContainer() {
             {/* 2026-1 */}
             <button
                   onClick={() => handleSemesterChange("2026-1")}
-                  className="group relative px-10 py-5 rounded-2xl font-bold text-base min-w-[220px] cursor-pointer overflow-hidden "
+                  className="group relative px-10 py-5 rounded-2xl font-bold text-base min-w-[220px] cursor-pointer overflow-hidden"
                   style={{
                     background: selectedSemester === "2026-1"
                       ? "linear-gradient(135deg, #22c55e 0%, #15803d 100%)"
@@ -309,10 +318,11 @@ export function CalendarContainer() {
                     boxShadow: selectedSemester === "2026-1"
                       ? "0 20px 40px -10px rgba(34, 197, 94, 0.5)"
                       : "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                    border: selectedSemester === "2026-1" ? "none" : "3px solid #22c55e",
                     transition: "transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease"
                   }}
                 >
-                  <div className={`absolute inset-0 bg-gray-100 dark:bg-gray-800 transition-opacity duration-300 ${selectedSemester === "2026-1" ? "opacity-0" : "opacity-100"}`} />
+                  <div className={`absolute inset-0 bg-white dark:bg-gray-800 transition-opacity duration-300 ${selectedSemester === "2026-1" ? "opacity-0" : "opacity-100"}`} />
                   <div className={`absolute inset-0 bg-gradient-to-r from-green-400 to-green-600 transition-opacity duration-300 ${selectedSemester === "2026-1" ? "opacity-0" : "opacity-0 group-hover:opacity-20"}`} />
                   <div className="relative z-10">
                     <span className={`block text-3xl md:text-4xl font-black transition-colors duration-300 ${selectedSemester === "2026-1" ? "text-white" : "text-gray-700 dark:text-gray-300"}`}>
@@ -330,7 +340,7 @@ export function CalendarContainer() {
             {/* 2026-2 */}
             <button
                 onClick={() => handleSemesterChange("2026-2")}
-                className="group relative px-10 py-5 rounded-2xl font-bold text-base min-w-[220px] cursor-pointer overflow-hidden "
+                className="group relative px-10 py-5 rounded-2xl font-bold text-base min-w-[220px] cursor-pointer overflow-hidden"
                 style={{
                   background: selectedSemester === "2026-2"
                     ? "linear-gradient(135deg, #a855f7 0%, #7c3aed 100%)"
@@ -339,10 +349,11 @@ export function CalendarContainer() {
                   boxShadow: selectedSemester === "2026-2"
                     ? "0 20px 40px -10px rgba(168, 85, 247, 0.5)"
                     : "0 4px 6px -1px rgba(0, 0, 0, 0.1)",
+                  border: selectedSemester === "2026-2" ? "none" : "3px solid #a855f7",
                   transition: "transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1), background 0.3s ease"
                 }}
               >
-                <div className={`absolute inset-0 bg-gray-100 dark:bg-gray-800 transition-opacity duration-300 ${selectedSemester === "2026-2" ? "opacity-0" : "opacity-100"}`} />
+                <div className={`absolute inset-0 bg-white dark:bg-gray-800 transition-opacity duration-300 ${selectedSemester === "2026-2" ? "opacity-0" : "opacity-100"}`} />
                 <div className={`absolute inset-0 bg-gradient-to-r from-purple-400 to-purple-600 transition-opacity duration-300 ${selectedSemester === "2026-2" ? "opacity-0" : "opacity-0 group-hover:opacity-20"}`} />
                 <div className="relative z-10">
                   <span className={`block text-3xl md:text-4xl font-black transition-colors duration-300 ${selectedSemester === "2026-2" ? "text-white" : "text-gray-700 dark:text-gray-300"}`}>
@@ -364,6 +375,13 @@ export function CalendarContainer() {
               className="w-40 md:w-48 h-auto hidden md:block"
             />
           </div>
+
+          {/* Mensaje cuando no hay período seleccionado */}
+          {!selectedSemester && (
+            <p className="text-center text-lg md:text-xl font-semibold text-gray-600 dark:text-gray-300 pb-6">
+              Selecciona un período para ver el calendario
+            </p>
+          )}
         </div>
       </div>
 
@@ -439,7 +457,7 @@ export function CalendarContainer() {
       )}
 
       {/* Calendar months */}
-      <div className="container mx-auto px-4 py-8">
+      <div id="months-section" className="container mx-auto px-4 py-8 scroll-mt-16">
         {selectedSemester ? (
           <div
             key={selectedSemester}
@@ -459,43 +477,7 @@ export function CalendarContainer() {
               </div>
             ))}
           </div>
-        ) : (
-          <div className="text-center py-20">
-            {/* Icono de calendario */}
-            <div className="relative inline-block mb-6">
-              <div
-                className="w-24 h-24 rounded-2xl flex flex-col items-center justify-center shadow-xl"
-                style={{
-                  background: "linear-gradient(135deg, #db0455 0%, #a855f7 100%)"
-                }}
-              >
-                {/* Barra superior del calendario */}
-                <div className="absolute -top-2 left-4 right-4 h-3 bg-white/30 rounded-full"></div>
-                <div className="absolute -top-1 left-6 w-2 h-4 bg-gray-700 rounded-full"></div>
-                <div className="absolute -top-1 right-6 w-2 h-4 bg-gray-700 rounded-full"></div>
-
-                {/* Contenido del calendario */}
-                <div className="text-white text-xs font-bold mt-2 tracking-wider">2026</div>
-                <div className="text-white text-3xl font-black">OTO</div>
-              </div>
-
-              {/* Efecto de brillo */}
-              <div
-                className="absolute inset-0 rounded-2xl opacity-50 pointer-events-none"
-                style={{
-                  background: "linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%)"
-                }}
-              ></div>
-            </div>
-
-            <h3 className="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-3">
-              Selecciona un período académico
-            </h3>
-            <p className="text-gray-500 dark:text-gray-400 max-w-md mx-auto">
-              Haz clic en uno de los botones de arriba para ver el calendario de actividades
-            </p>
-          </div>
-        )}
+        ) : null}
       </div>
 
       {/* Footer */}
