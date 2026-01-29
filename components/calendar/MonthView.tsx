@@ -123,17 +123,17 @@ export function MonthView({
         {/* Month Header - Clickeable */}
         <button
           onClick={onToggle}
-          className={`w-full bg-gradient-to-r ${colors.bg} p-6 cursor-pointer transition-all duration-200 hover:brightness-105 ${isExpanded ? "shadow-lg" : ""}`}
+          className={`w-full bg-gradient-to-r ${colors.bg} px-4 py-3 cursor-pointer transition-all duration-200 hover:brightness-105 ${isExpanded ? "shadow-lg" : ""}`}
         >
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
                 strokeWidth={3}
                 stroke="currentColor"
-                className={`w-8 h-8 text-white transition-all duration-500 ease-out ${isExpanded ? "rotate-90 scale-110" : ""}`}
+                className={`w-6 h-6 text-white transition-all duration-300 ${isExpanded ? "rotate-90" : ""}`}
               >
                 <path
                   strokeLinecap="round"
@@ -141,16 +141,16 @@ export function MonthView({
                   d="m8.25 4.5 7.5 7.5-7.5 7.5"
                 />
               </svg>
-              <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tight">
+              <h2 className="text-2xl md:text-3xl font-black text-white uppercase tracking-tight">
                 {monthName}
               </h2>
             </div>
-            <div className="flex items-center gap-3">
-              <span className="bg-white/20 text-white px-4 py-1.5 rounded-full text-sm font-medium">
+            <div className="flex items-center gap-2">
+              <span className="bg-white/20 text-white px-3 py-1 rounded-full text-xs font-medium">
                 {monthEvents.length} evento{monthEvents.length !== 1 ? "s" : ""}
               </span>
-              <span className="text-white/80 text-sm hidden sm:block">
-                {isExpanded ? "Clic para cerrar" : "Clic para ver"}
+              <span className="text-white/80 text-xs hidden sm:block">
+                {isExpanded ? "Cerrar" : "Ver"}
               </span>
             </div>
           </div>
@@ -166,21 +166,21 @@ export function MonthView({
         >
           <div className="overflow-hidden">
             <div
-              className={`p-6 relative transition-opacity duration-300 ${isExpanded ? "opacity-100" : "opacity-0"}`}
+              className={`p-4 relative transition-opacity duration-300 ${isExpanded ? "opacity-100" : "opacity-0"}`}
             >
           {/* Watermark Logo */}
           <div
-            className="absolute inset-0 pointer-events-none opacity-[0.08] dark:opacity-[0.12]"
+            className="absolute inset-0 pointer-events-none opacity-[0.06] dark:opacity-[0.08]"
             style={{
               backgroundImage: "url('/img/log/logounamad.png')",
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
-              backgroundSize: "350px",
+              backgroundSize: "280px",
             }}
           />
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 relative z-10">
             {/* Events list */}
-            <div className="lg:col-span-2 space-y-4">
+            <div className="lg:col-span-2 space-y-3">
               {selectedDate && selectedDateEvents.length > 0 ? (
                 <>
                   <div className="flex items-center justify-between">

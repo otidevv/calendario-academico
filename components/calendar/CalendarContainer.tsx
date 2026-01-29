@@ -51,9 +51,12 @@ export function CalendarContainer() {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedMonth, setSelectedMonth] = useState<number | null>(null);
   const [expandedMonth, setExpandedMonth] = useState<number | null>(null);
-  const [selectedSemester, setSelectedSemester] = useState<SemesterType>("2026-0");
+  const [selectedSemester, setSelectedSemester] = useState<SemesterType | null>(null);
 
   const filteredEvents = useMemo(() => {
+    // Si no hay período seleccionado, no mostrar eventos
+    if (!selectedSemester) return [];
+
     let events = [...calendarEvents];
 
     // Filter by semester
@@ -162,7 +165,8 @@ export function CalendarContainer() {
   };
 
   // Get semester info for display
-  const getSemesterInfo = (id: SemesterType) => {
+  const getSemesterInfo = (id: SemesterType | null) => {
+    if (!id) return { name: "Selecciona un período", description: "" };
     const sem = semesters.find((s) => s.id === id);
     return sem || { name: id, description: "" };
   };
@@ -197,14 +201,6 @@ export function CalendarContainer() {
 
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 lg:gap-16">
-            {/* Mascota izquierda */}
-            <img
-              src="/img/mascota/otoizquierda.png"
-              alt="OTO - Mascota UNAMAD"
-              loading="eager"
-              className="w-32 md:w-40 lg:w-48 h-auto hidden md:block"
-            />
-
             {/* Texto central */}
             <div className="text-center">
               {/* Bienvenido al - Estilo editorial */}
@@ -261,8 +257,15 @@ export function CalendarContainer() {
       </div>
 
       {/* Semester Filter Tabs */}
-      <div className="bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-sm">
-        <div className="container mx-auto px-4">
+      <div className="relative bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 shadow-sm overflow-hidden">
+        {/* Patrón de fondo */}
+        <div
+          className="absolute inset-0 opacity-[0.5] dark:opacity-[0.2]"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23db0455' fill-opacity='0.1' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='1.5'/%3E%3Ccircle cx='13' cy='13' r='1.5'/%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-wrap justify-center items-center gap-4 md:gap-6 py-6">
             {/* 2026-0 */}
             <button
@@ -353,11 +356,19 @@ export function CalendarContainer() {
                   <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-14 h-1 bg-white rounded-full mb-1 animate-pulse" />
                 )}
             </button>
+
+            {/* Mascota OTO */}
+            <img
+              src="/img/mascota/mascota.png"
+              alt="OTO - Mascota UNAMAD"
+              className="w-40 md:w-48 h-auto hidden md:block"
+            />
           </div>
         </div>
       </div>
 
-      {/* Navigation */}
+      {/* Navigation - Solo visible cuando hay período seleccionado */}
+      {selectedSemester && (
       <div className="sticky top-16 z-40 bg-white dark:bg-gray-950 border-b border-gray-200 dark:border-gray-800">
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-col md:flex-row md:items-center gap-4">
@@ -425,27 +436,66 @@ export function CalendarContainer() {
           </div>
         </div>
       </div>
+      )}
 
       {/* Calendar months */}
       <div className="container mx-auto px-4 py-8">
-        <div
-          key={selectedSemester}
-          className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500"
-        >
-          {MONTHS.map((monthName, index) => (
-            <div key={monthName} id={`month-${index}`} className="scroll-mt-36 scroll-snap-item">
-              <MonthView
-                year={2026}
-                month={index}
-                monthName={monthName}
-                events={filteredEvents}
-                onEventClick={handleEventClick}
-                isExpanded={expandedMonth === index}
-                onToggle={() => toggleMonth(index)}
-              />
+        {selectedSemester ? (
+          <div
+            key={selectedSemester}
+            className="space-y-6"
+          >
+            {MONTHS.map((monthName, index) => (
+              <div key={monthName} id={`month-${index}`} className="scroll-mt-36 scroll-snap-item">
+                <MonthView
+                  year={2026}
+                  month={index}
+                  monthName={monthName}
+                  events={filteredEvents}
+                  onEventClick={handleEventClick}
+                  isExpanded={expandedMonth === index}
+                  onToggle={() => toggleMonth(index)}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-20">
+            {/* Icono de calendario */}
+            <div className="relative inline-block mb-6">
+              <div
+                className="w-24 h-24 rounded-2xl flex flex-col items-center justify-center shadow-xl"
+                style={{
+                  background: "linear-gradient(135deg, #db0455 0%, #a855f7 100%)"
+                }}
+              >
+                {/* Barra superior del calendario */}
+                <div className="absolute -top-2 left-4 right-4 h-3 bg-white/30 rounded-full"></div>
+                <div className="absolute -top-1 left-6 w-2 h-4 bg-gray-700 rounded-full"></div>
+                <div className="absolute -top-1 right-6 w-2 h-4 bg-gray-700 rounded-full"></div>
+
+                {/* Contenido del calendario */}
+                <div className="text-white text-xs font-bold mt-2 tracking-wider">2026</div>
+                <div className="text-white text-3xl font-black">OTO</div>
+              </div>
+
+              {/* Efecto de brillo */}
+              <div
+                className="absolute inset-0 rounded-2xl opacity-50 pointer-events-none"
+                style={{
+                  background: "linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 50%)"
+                }}
+              ></div>
             </div>
-          ))}
-        </div>
+
+            <h3 className="text-2xl font-bold text-gray-700 dark:text-gray-300 mb-3">
+              Selecciona un período académico
+            </h3>
+            <p className="text-gray-500 dark:text-gray-400 max-w-md mx-auto">
+              Haz clic en uno de los botones de arriba para ver el calendario de actividades
+            </p>
+          </div>
+        )}
       </div>
 
       {/* Footer */}
