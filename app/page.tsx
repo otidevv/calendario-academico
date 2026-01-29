@@ -3,22 +3,11 @@ import { CalendarContainer } from "@/components/calendar/CalendarContainer";
 
 export default function Home() {
   return (
-    <div
-      className="min-h-screen bg-gray-50 dark:bg-gray-950"
-      style={{
-        backgroundImage: "url('/img/body/fondo.jpg')",
-        backgroundSize: "cover",
-        backgroundAttachment: "fixed",
-        backgroundPosition: "center",
-      }}
-    >
-      {/* Overlay for readability */}
-      <div className="min-h-screen bg-gray-50/90 dark:bg-gray-950/95">
-        <Header />
-        <main>
-          <CalendarContainer />
-        </main>
-      </div>
+    <div className="min-h-screen bg-gray-100 dark:bg-gray-950">
+      <Header />
+      <main>
+        <CalendarContainer />
+      </main>
     </div>
   );
 }

@@ -97,18 +97,6 @@ export const semesters: Semester[] = [
 ];
 
 export const calendarEvents: CalendarEvent[] = [
-  // ==================== VACACIONES ====================
-  {
-    id: "vacaciones-docentes",
-    title: "Vacaciones Docentes",
-    description: "Período de vacaciones para docentes (60 días)",
-    startDate: "2026-01-12",
-    endDate: "2026-03-12",
-    category: "no-lectivo",
-    semester: "general",
-    isRange: true,
-  },
-
   // ==================== CICLO DE NIVELACIÓN (2026-0) ====================
   {
     id: "niv-preinscripcion",

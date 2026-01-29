@@ -19,6 +19,8 @@ interface MonthViewProps {
   monthName: string;
   events: CalendarEvent[];
   onEventClick: (event: CalendarEvent) => void;
+  isExpanded: boolean;
+  onToggle: () => void;
 }
 
 const MONTH_COLORS: Record<number, { bg: string; text: string; accent: string }> = {
@@ -42,6 +44,8 @@ export function MonthView({
   monthName,
   events,
   onEventClick,
+  isExpanded,
+  onToggle,
 }: MonthViewProps) {
   const [selectedDate, setSelectedDate] = useState<string | null>(null);
   const [showAllEvents, setShowAllEvents] = useState(false);
@@ -116,25 +120,54 @@ export function MonthView({
   return (
     <>
       <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden border border-gray-200 dark:border-gray-700 relative">
-        {/* Month Header */}
-        <div className={`bg-gradient-to-r ${colors.bg} p-6`}>
+        {/* Month Header - Clickeable */}
+        <button
+          onClick={onToggle}
+          className={`w-full bg-gradient-to-r ${colors.bg} p-6 cursor-pointer transition-all duration-200 hover:brightness-105 ${isExpanded ? "shadow-lg" : ""}`}
+        >
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <span className="text-white text-3xl font-black">&gt;&gt;&gt;</span>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={3}
+                stroke="currentColor"
+                className={`w-8 h-8 text-white transition-all duration-500 ease-out ${isExpanded ? "rotate-90 scale-110" : ""}`}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="m8.25 4.5 7.5 7.5-7.5 7.5"
+                />
+              </svg>
               <h2 className="text-4xl md:text-5xl font-black text-white uppercase tracking-tight">
                 {monthName}
               </h2>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="bg-white/20 text-white px-3 py-1 rounded-full text-sm font-medium">
+            <div className="flex items-center gap-3">
+              <span className="bg-white/20 text-white px-4 py-1.5 rounded-full text-sm font-medium">
                 {monthEvents.length} evento{monthEvents.length !== 1 ? "s" : ""}
+              </span>
+              <span className="text-white/80 text-sm hidden sm:block">
+                {isExpanded ? "Clic para cerrar" : "Clic para ver"}
               </span>
             </div>
           </div>
-        </div>
+        </button>
 
-        {/* Content */}
-        <div className="p-6 relative">
+        {/* Content - Colapsable con animación fluida */}
+        <div
+          className="grid"
+          style={{
+            gridTemplateRows: isExpanded ? "1fr" : "0fr",
+            transition: "grid-template-rows 0.35s ease-out"
+          }}
+        >
+          <div className="overflow-hidden">
+            <div
+              className={`p-6 relative transition-opacity duration-300 ${isExpanded ? "opacity-100" : "opacity-0"}`}
+            >
           {/* Watermark Logo */}
           <div
             className="absolute inset-0 pointer-events-none opacity-[0.08] dark:opacity-[0.12]"
@@ -257,6 +290,8 @@ export function MonthView({
                   <span>Día con eventos</span>
                 </div>
               </div>
+            </div>
+          </div>
             </div>
           </div>
         </div>

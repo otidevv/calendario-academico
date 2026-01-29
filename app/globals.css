@@ -119,7 +119,44 @@
   * {
     @apply border-border outline-ring/50;
   }
+
+  html {
+    /* Scroll nativo rápido - smooth solo se aplica programáticamente */
+    -webkit-overflow-scrolling: touch;
+  }
+
   body {
     @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Prevenir el highlight en tap móvil */
+    -webkit-tap-highlight-color: transparent;
+    /* Optimización de texto */
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Optimización global de imágenes */
+  img {
+    content-visibility: auto;
+  }
+
+  /* Reducir motion para usuarios que lo prefieran */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* Utilidades de rendimiento */
+@layer utilities {
+  .scroll-snap-item {
+    scroll-snap-align: start;
+    scroll-margin-top: 9rem;
   }
 }
